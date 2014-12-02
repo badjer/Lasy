@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Nvelope;
+using MySql.Data.MySqlClient;
 
-namespace Lasy
+namespace Lasy.MySql
 {
     public class MySqlModifier : SqlModifier
     {
@@ -12,9 +13,9 @@ namespace Lasy
             : base(connectionString, analyzer, taxonomy)
         { }
 
-        protected internal override System.Data.IDbConnection _getConnection(string connectionString)
+        protected override System.Data.IDbConnection _getConnection(string connectionString)
         {
-            return new MySql.Data.MySqlClient.MySqlConnection(connectionString);
+            return new MySqlConnection(connectionString);
         }
 
         public override string _getCreateSchemaSql(string schema)

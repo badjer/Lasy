@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Lasy
+namespace Lasy.MySql
 {
     public class MySqlNameQualifier : SqlNameQualifier
     {

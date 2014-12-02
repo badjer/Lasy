@@ -11,7 +11,7 @@ namespace Lasy
             : base(connectionString, new Sql2000NameQualifier(), cacheDuration)
         { }
 
-        protected internal override string _getPrimaryKeySql()
+        protected override string _getPrimaryKeySql()
         {
             return @"SELECT     
                 isc.COLUMN_NAME as [Name]
@@ -31,7 +31,7 @@ namespace Lasy
             order by isc.ORDINAL_POSITION";
         }
 
-        protected internal override string _getAutonumberKeySql()
+        protected override string _getAutonumberKeySql()
         {
             return @"SELECT     
                 isc.COLUMN_NAME as [Name]
@@ -48,20 +48,20 @@ namespace Lasy
             order by isc.ORDINAL_POSITION";
         }
 
-        protected internal override string _getTableExistsSql(string schema, string table)
+        protected override string _getTableExistsSql(string schema, string table)
         {
             return @"SELECT 1 FROM sysobjects tbl 
                 WHERE tbl.xtype = 'U' and tbl.name = @table";
         }
 
-        protected internal override string _getSchemaExistsSql()
+        protected override string _getSchemaExistsSql()
         {
             // Do nothing - SQL 2000 doesn't support schemas
             // The only schema is dbo
             return "select @schema = 'dbo'";
         }
 
-        protected internal override string _getFieldTypeSql()
+        protected override string _getFieldTypeSql()
         {
             return @"SELECT     
                     isc.*

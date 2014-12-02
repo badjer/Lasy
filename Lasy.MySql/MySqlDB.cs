@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 using Nvelope;
 using System.Text.RegularExpressions;
 
-namespace Lasy
+namespace Lasy.MySql
 {
     public class MySqlDB : SqlDB
     {
@@ -14,7 +14,7 @@ namespace Lasy
             : base(connectionString, analyzer, strictTables)
         { }
 
-        protected internal override System.Data.IDbConnection _getConnection()
+        protected override System.Data.IDbConnection _getConnection()
         {
             return new MySqlConnection(ConnectionString);
         }

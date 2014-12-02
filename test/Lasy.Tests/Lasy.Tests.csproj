@@ -93,6 +93,14 @@
     <Compile Include="SqlTypeConversionTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Lasy.Json\Lasy.Json.csproj">
+      <Project>{7165406b-77ff-4ccf-9387-299e3aa9fb41}</Project>
+      <Name>Lasy.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Lasy.MySql\Lasy.MySql.csproj">
+      <Project>{bc52979d-ab56-4b87-8cec-e6cf356fa8ec}</Project>
+      <Name>Lasy.MySql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Lasy\Lasy.csproj">
       <Project>{99A415F9-8D5A-4977-AC8B-86EA82C891D3}</Project>
       <Name>Lasy</Name>

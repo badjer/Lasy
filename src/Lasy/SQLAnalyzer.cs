@@ -84,12 +84,12 @@ namespace Lasy
                 OnInvalidateSchemaCache(schema);
         }
 
-        protected internal virtual IDbConnection _getConnection(string connectionString)
+        protected virtual IDbConnection _getConnection(string connectionString)
         {
             return new System.Data.SqlClient.SqlConnection(connectionString);
         }
 
-        protected internal virtual string _getPrimaryKeySql()
+        protected virtual string _getPrimaryKeySql()
         {
             return @"select isc.Column_name
                     from 
@@ -104,7 +104,7 @@ namespace Lasy
                     order by ORDINAL_POSITION";
         }
 
-        protected internal virtual string _getAutonumberKeySql()
+        protected virtual string _getAutonumberKeySql()
         {
             return @"select isc.Column_name
                     from 
@@ -119,7 +119,7 @@ namespace Lasy
                     order by ORDINAL_POSITION";
         }
 
-        protected internal virtual string _getTableExistsSql(string schema, string table)
+        protected virtual string _getTableExistsSql(string schema, string table)
         {
             //return "select 1 from sys.tables where name = @table union all select 1 from sys.views where name = @table";
             return @"SELECT 1
@@ -135,7 +135,7 @@ namespace Lasy
 	                    AND schemas.name = @schema";
         }
 
-        protected internal virtual string _getFieldTypeSql()
+        protected virtual string _getFieldTypeSql()
         {
             return @"SELECT     
                     isc.*
@@ -156,7 +156,7 @@ namespace Lasy
                 order by isc.ORDINAL_POSITION";
         }
 
-        protected internal virtual string _getSchemaExistsSql()
+        protected virtual string _getSchemaExistsSql()
         {
             return "select 1 from sys.schemas where name = @schema";
         }

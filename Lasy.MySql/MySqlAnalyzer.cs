@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using Nvelope;
 
-namespace Lasy
+namespace Lasy.MySql
 {
     public class MySqlAnalyzer : SqlAnalyzer
     {
@@ -15,7 +15,7 @@ namespace Lasy
             : base(connectionString, new MySqlNameQualifier(connectionString), cacheDuration)
         { }
 
-        protected internal override IDbConnection _getConnection(string connectionString)
+        protected override IDbConnection _getConnection(string connectionString)
         {
             return new MySqlConnection(connectionString);
         }
@@ -32,7 +32,7 @@ namespace Lasy
             }
         }
 
-        protected internal override string _getTableExistsSql(string schema, string table)
+        protected override string _getTableExistsSql(string schema, string table)
         {
             // In MySQL, both tables and views show up in information_schema.tables, so we 
             // don't need to look at information_schema.views
@@ -42,7 +42,7 @@ namespace Lasy
             return @"select 1 from information_schema.tables where table_name = @table and table_schema = '" + _dbName + "'";
         }
 
-        protected internal override string _getPrimaryKeySql()
+        protected override string _getPrimaryKeySql()
         {
             return @"SELECT k.COLUMN_NAME
                     FROM information_schema.table_constraints t
@@ -53,14 +53,14 @@ namespace Lasy
                         AND t.table_name = @table";
         }
 
-        protected internal override string _getAutonumberKeySql()
+        protected override string _getAutonumberKeySql()
         {
             return @"select column_name from information_schema.columns 
                 where table_name = @table and table_schema = Database()
                 and extra like '%auto_increment%'";
         }
 
-        protected internal override string _getFieldTypeSql()
+        protected override string _getFieldTypeSql()
         {
             return @"select * from information_schema.columns 
                     where table_name = @table and table_schema = Database()";

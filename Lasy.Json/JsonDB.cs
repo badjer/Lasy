@@ -7,7 +7,7 @@ using Nvelope;
 using Nvelope.IO;
 using Nvelope.Reading;
 
-namespace Lasy
+namespace Lasy.Json
 {
     public class JsonDB : IReadWrite
     {

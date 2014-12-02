@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Lasy.MySql;
 using NUnit.Framework;
 using Lasy;
 
@@ -12,7 +13,7 @@ namespace LasyTests.Sql
         [Test]
         public void Read()
         {
-            var db = ConnectTo.ModifiableMySql(Config.TestMySqlConnectionString);
+            var db = MySqlConnectTo.Db(Config.TestMySqlConnectionString);
             var res = db.ReadAll("House");
             Assert.True(res.Any());
         }

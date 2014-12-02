@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Lasy.MySql;
 using NUnit.Framework;
 using Lasy;
 using Nvelope;
@@ -16,7 +17,7 @@ namespace LasyTests.Sql
         [Test]
         public void Read()
         {
-            var db = ConnectTo.MySql(Config.TestMySqlConnectionString);
+            var db = MySqlConnectTo.Db(Config.TestMySqlConnectionString);
             var res = db.ReadAll("House");
             Assert.True(res.Any());
         }
@@ -24,7 +25,7 @@ namespace LasyTests.Sql
         [Test]
         public void Insert()
         {
-            var db = ConnectTo.MySql(Config.TestMySqlConnectionString);
+            var db = MySqlConnectTo.Db(Config.TestMySqlConnectionString);
             var obj = new { Number = 1, Street = "Main"};
             var keys = db.Insert("House", obj);
             var fromDb = db.Read("House", keys).Single();
@@ -34,7 +35,7 @@ namespace LasyTests.Sql
         [Test]
         public void Update()
         {
-            var db = ConnectTo.MySql(Config.TestMySqlConnectionString);
+            var db = MySqlConnectTo.Db(Config.TestMySqlConnectionString);
             var obj = new { Number = 1, Street = "Main" };
             var keys = db.Insert("House", obj);
             var newObj = obj._AsDictionary().Assoc("Number", 2);
@@ -46,7 +47,7 @@ namespace LasyTests.Sql
         [Test]
         public void Delete()
         {
-            var db = ConnectTo.MySql(Config.TestMySqlConnectionString);
+            var db = MySqlConnectTo.Db(Config.TestMySqlConnectionString);
             var obj = new { Number = 1, Street = "Main" };
             var keys = db.Insert("House", obj);
             Assert.True(db.Read("House", keys).Any());

@@ -20,10 +20,6 @@ namespace Lasy
             return new SqlDB(connString, new SqlAnalyzer(connString), strictTables);
         }
 
-        public static SqlDB MySql(string connString, bool strictTables = true)
-        {
-            return new MySqlDB(connString, new MySqlAnalyzer(connString), strictTables);
-        }
 
         public static ModifiableSqlDB ModifiableSql2000(string connString, ITypedDBAnalyzer taxonomy = null)
         {
@@ -41,13 +37,6 @@ namespace Lasy
             return new ModifiableSqlDB(db, modifier);
         }
 
-        public static ModifiableSqlDB ModifiableMySql(string connString, ITypedDBAnalyzer taxonomy = null)
-        {
-            var analyzer = new MySqlAnalyzer(connString);
-            var modifier = new MySqlModifier(connString, analyzer, taxonomy);
-            var db = new MySqlDB(connString, analyzer, false);
-            return new ModifiableSqlDB(db, modifier);
-        }
 
         public static FileDB File(string directory, string fileExtension = ".rpt")
         {
