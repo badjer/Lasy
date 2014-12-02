@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Nvelope;
 using System.Data;
-using System.Reactive.Linq;
 using System.Data.Common;
 
 namespace Lasy
@@ -13,6 +12,9 @@ namespace Lasy
     {
         public SqlAnalyzer(string connectionString, INameQualifier nameQualifier = null, TimeSpan cacheDuration = default(TimeSpan))
         {
+            OnInvalidateSchemaCache += _onInvalidateSchemaCache;
+            OnInvalidateTableCache += _onInvalidateTableCache;
+
             nameQualifier = nameQualifier ?? new SqlNameQualifier();
 
             if(cacheDuration == default(TimeSpan))
@@ -21,36 +23,28 @@ namespace Lasy
             _connectionString = connectionString;
             NameQualifier = nameQualifier;
 
-            // We use function references instead of directly exposing the functions so 
-            // that we can build in caching without much work.
-            // We'll do caching using Memoize - it'll cache the results of the function
-            // for as long as cacheDuration.
-            // Also, in some subclasses (ie, SqlMetaAnalyzer), we implement a different
-            // caching scheme - using these function references lets us do that without 
-            // having to change anything here.
-
-            // Why didn't we just do this through polymorphism, you ask?
-            // Well, if we did, we wouldn't be able to compose our functions easily - we can't 
-            // override a function and just say "hey, use a memoized version of this function instead
-            // of the base-class version" - we'd have to implement memoization from scratch in each
-            // method. That's just a silly waste of time. Also, when we subclass, we'd have to implement
-            // all of the memoization and cache invalidation we do in SqlMetaAnalyzer for each of these
-            // methods again! Polymorphism doesn't allow us to do any manipulation of our functions - all you
-            // can do is reimplement them, you can't get at the underlying binding and change it. That is to say,
-            // there's no way using override to say "replace this method with a memoized version of it" - all you 
-            // can do is implement the guts of memoize inside your function, and repeat it for every function
-            // you want to do the same thing to.
-            var schemaEvents = Observable.FromEvent<string>(d => OnInvalidateSchemaCache += d, d => OnInvalidateSchemaCache -= d);
-            var tableEvents = Observable.FromEvent<string>(d => OnInvalidateTableCache += d, d => OnInvalidateTableCache -= d);
-
-            _getAutonumberKey = new Func<string, string>(_getAutonumberKeyFromDB).Memoize(cacheDuration, tableEvents);
-            _getFieldTypes = new Func<string, Dictionary<string,SqlColumnType>>(_getFieldTypesFromDB).Memoize(cacheDuration, tableEvents);
-            _getPrimaryKeys = new Func<string, ICollection<string>>(_getPrimaryKeysFromDB).Memoize(cacheDuration, tableEvents);
-            _tableExists = new Func<string, bool>(_tableExistsFromDB).Memoize(cacheDuration, tableEvents);
-            _schemaExists = new Func<string, bool>(_schemaExistsFromDb).Memoize(cacheDuration, schemaEvents);
+            _resetSchemaCache();
+            _resetTableCache();
         }
 
-        protected virtual TimeSpan _defaultCacheDuration()
+        private void _resetTableCache()
+        {
+            var cacheDuration = _defaultCacheDuration();
+
+            _getAutonumberKey = new Func<string, string>(_getAutonumberKeyFromDB).Memoize(cacheDuration);
+            _getFieldTypes = new Func<string, Dictionary<string, SqlColumnType>>(_getFieldTypesFromDB).Memoize(cacheDuration);
+            _getPrimaryKeys = new Func<string, ICollection<string>>(_getPrimaryKeysFromDB).Memoize(cacheDuration);
+            _tableExists = new Func<string, bool>(_tableExistsFromDB).Memoize(cacheDuration);
+       
+        }
+
+        private void _resetSchemaCache()
+        {
+            var cacheDuration = _defaultCacheDuration();
+            _schemaExists = new Func<string, bool>(_schemaExistsFromDb).Memoize(cacheDuration);
+        }
+
+        protected TimeSpan _defaultCacheDuration()
         {
             return new TimeSpan(0, 10, 0);
         }
@@ -65,6 +59,17 @@ namespace Lasy
 
         protected event Action<string> OnInvalidateTableCache;
         protected event Action<string> OnInvalidateSchemaCache;
+
+        protected void _onInvalidateTableCache(string table)
+        {
+            _resetTableCache();
+        }
+
+        protected void _onInvalidateSchemaCache(string schema)
+        {
+            _resetSchemaCache();
+        }
+
         /// <summary>
         /// Call this to indicate that information for a cached table is no longer valid
         /// </summary>
