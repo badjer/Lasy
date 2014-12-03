@@ -44,21 +44,23 @@ namespace Lasy.Json
             return keys;
         }
 
-        public void Delete(string tableName, Dictionary<string, object> keyFields)
+        public int Delete(string tableName, Dictionary<string, object> keyFields)
         {
             var allRows = _getTable(tableName);
             var victims = allRows.Where(r => r.IsSameAs(keyFields, keyFields.Keys.Intersect(r.Keys), ObjectExtensions.LazyEq)).ToList();
             var toWrite = allRows.Except(victims);
             _writeTable(tableName, toWrite);
+            return victims.Count();
         }
 
-        public void Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
+        public int Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
         {
             var allRows = _getTable(tableName);
             var victims = allRows.Where(r => r.IsSameAs(keyFields, keyFields.Keys.Intersect(r.Keys), ObjectExtensions.LazyEq)).ToList();
             var updated = victims.Select(r => r.Union(dataFields)).ToList();
             var toWrite = allRows.Except(victims).And(updated);
             _writeTable(tableName, toWrite);
+            return victims.Count();
         }
 
         protected Dictionary<string, object> _getKeys(string tablename, 

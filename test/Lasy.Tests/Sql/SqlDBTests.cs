@@ -35,7 +35,7 @@ namespace LasyTests.Sql
             int actualCount = int.MinValue;
             using (var conn = new SqlConnection(Config.TestDBConnectionString))
             {
-                actualCount = conn.ExecuteSingleValue<int>("select count(*) from Person");
+                actualCount = conn.ExecuteScalar("select count(*) from Person").ConvertTo<int>();
             }
 
             Assert.AreEqual(results.Count(), actualCount);
@@ -54,7 +54,7 @@ namespace LasyTests.Sql
             int actualCount = int.MinValue;
             using (var conn = new SqlConnection(Config.TestDBConnectionString))
             {
-                actualCount = conn.ExecuteSingleValue<int>("select count(*) from Person");
+                actualCount = conn.ExecuteScalar("select count(*) from Person").ConvertTo<int>();
             }
 
             //Make sure we get all of the rows in the table

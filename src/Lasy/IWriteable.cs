@@ -11,9 +11,9 @@ namespace Lasy
     {
         Dictionary<string, object> Insert(string tableName, Dictionary<string, object> row);
 
-        void Delete(string tableName, Dictionary<string, object> keyFields);
+        int Delete(string tableName, Dictionary<string, object> keyFields);
 
-        void Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields);
+        int Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields);
     }
 
     public static class IWriteableExtensions

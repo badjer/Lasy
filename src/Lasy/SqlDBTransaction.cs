@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using Nvelope;
 
 namespace Lasy
 {
@@ -53,17 +54,16 @@ namespace Lasy
                 values = new Dictionary<string, object>();
 
             var command = _getCommand(sql);
-            return command.ExecuteSingleValue<int?>(sql, values);
+            return command.ExecuteScalar(sql, values).ConvertTo<int?>();
         }
 
-        protected override void sqlUpdate(string sql, Dictionary<string, object> values = null)
+        protected override int sqlUpdate(string sql, Dictionary<string, object> values = null)
         {
             if (values == null)
                 values = new Dictionary<string, object>();
 
             var command = _getCommand(sql);
-            command.Execute(sql, values);
-           
+            return command.ExecuteNonQuery(sql, values);
         }
 
         public void Dispose()

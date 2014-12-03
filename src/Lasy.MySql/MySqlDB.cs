@@ -71,14 +71,14 @@ namespace Lasy.MySql
                 return _db.Insert(tableName, row);
             }
 
-            public void Delete(string tableName, Dictionary<string, object> keyFields)
+            public int Delete(string tableName, Dictionary<string, object> keyFields)
             {
-                _db.Delete(tableName, keyFields);
+                return _db.Delete(tableName, keyFields);
             }
 
-            public void Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
+            public int Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
             {
-                _db.Update(tableName, dataFields, keyFields);
+                return _db.Update(tableName, dataFields, keyFields);
             }
 
             public void Dispose() { }

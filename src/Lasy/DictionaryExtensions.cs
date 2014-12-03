@@ -16,7 +16,7 @@ namespace Lasy
         /// <returns></returns>
         public static Dictionary<string, object> ScrubNulls(this Dictionary<string, object> values)
         {
-            var fields = values.Where(kv => kv.Value == DBNull.Value).Select(kv => kv.Key);
+            var fields = values.Where(kv => kv.Value == DBNull.Value).Select(kv => kv.Key).ToList();
             if (!fields.Any())
                 return values;
             var res = values.Copy();

@@ -140,16 +140,20 @@ namespace Lasy
             return pks;
         }
 
-        public void Delete(string tableName, Dictionary<string, object> row)
+        public int Delete(string tableName, Dictionary<string, object> row)
         {
             _db.FireOnDelete(tableName, row);
             _operations.Add(new DeleteOp(tableName, row.ScrubNulls()));
+#warning Probably wrong
+            return 1;
         }
 
-        public void Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
+        public int Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
         {
             _db.FireOnUpdate(tableName, dataFields, keyFields);
             _operations.Add(new UpdateOp(tableName, dataFields.ScrubNulls(), keyFields.ScrubNulls()));
+#warning Probably wrong
+            return 1;
         }
 
         public void Dispose()

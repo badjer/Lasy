@@ -39,18 +39,18 @@ namespace Lasy
 
             using (var conn = _getConnection())
             {
-                return conn.ExecuteSingleValue<int?>(sql, values);
+                return conn.ExecuteScalar(sql, values).ConvertTo<int?>();
             }
         }
 
-        protected override void sqlUpdate(string sql, Dictionary<string, object> values = null)
+        protected override int sqlUpdate(string sql, Dictionary<string, object> values = null)
         {
             if (values == null)
                 values = new Dictionary<string, object>();
 
             using (var conn = _getConnection())
             {
-                conn.Execute(sql, values);
+                return conn.ExecuteNonQuery(sql, values);
             }
         }
 

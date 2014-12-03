@@ -19,7 +19,7 @@ namespace Lasy
 
         protected abstract IEnumerable<Dictionary<string, object>> sqlRead(string sql, Dictionary<string, object> values);
         protected abstract int? sqlInsert(string sql, Dictionary<string, object> values);
-        protected abstract void sqlUpdate(string sql, Dictionary<string, object> values);
+        protected abstract int sqlUpdate(string sql, Dictionary<string, object> values);
 
         public virtual string QualifiedTable(string tablename)
         {
@@ -197,31 +197,31 @@ namespace Lasy
             return row.Only(primaryKeys);
         }
 
-        public virtual void Delete(string tableName, Dictionary<string, object> keyFields)
+        public virtual int Delete(string tableName, Dictionary<string, object> keyFields)
         {
             if (!Analyzer.TableExists(tableName))
                 if (StrictTables)
                     throw new NotATableException(tableName);
                 else
-                    return;
+                    return 0;
 
-            sqlUpdate(MakeDeleteSql(tableName, keyFields), keyFields);
+            return sqlUpdate(MakeDeleteSql(tableName, keyFields), keyFields);
         }
 
-        public virtual void Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
+        public virtual int Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
         {
             if (!Analyzer.TableExists(tableName))
                 if (StrictTables)
                     throw new NotATableException(tableName);
                 else
-                    return;
+                    return 0;
 
             var sql = MakeUpdateSql(tableName, dataFields, keyFields);
 
             var data = dataFields.SelectKeys(key => "data" + key);
             var keys = keyFields.SelectKeys(key => "key" + key);
 
-            sqlUpdate(sql, data.Union(keys));
+            return sqlUpdate(sql, data.Union(keys));
         }
     }
 }

@@ -48,14 +48,14 @@ namespace Lasy
         }
 
 
-        public void Delete(string tableName, Dictionary<string, object> keyFields)
+        public int Delete(string tableName, Dictionary<string, object> keyFields)
         {
-            DB.Delete(tableName, keyFields);
+            return DB.Delete(tableName, keyFields);
         }
 
-        public void Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
+        public int Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
         {
-            DB.Update(tableName, dataFields, keyFields);
+            return DB.Update(tableName, dataFields, keyFields);
         }
     }
 }

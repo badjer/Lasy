@@ -97,7 +97,7 @@ namespace Lasy
             return this.ExtractKeys(tableName, dictToUse);
         }
 
-        public virtual void Delete(string tableName, Dictionary<string, object> fieldValues)
+        public virtual int Delete(string tableName, Dictionary<string, object> fieldValues)
         {
             FireOnDelete(tableName, fieldValues);
 
@@ -106,15 +106,17 @@ namespace Lasy
                 fieldValues = fieldValues.ScrubNulls();
                 var victims = DataStore[tableName].FindByFieldValues(fieldValues).ToList();
                 victims.ForEach(x => DataStore[tableName].Remove(x));
+                return victims.Count();
             }
+            return 0;
         }
 
-        public virtual void Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
+        public virtual int Update(string tableName, Dictionary<string, object> dataFields, Dictionary<string, object> keyFields)
         {
             FireOnUpdate(tableName, dataFields, keyFields);
 
             if(!DataStore.ContainsKey(tableName))
-                return;
+                return 0;
 
             dataFields = dataFields.ScrubNulls();
             keyFields = keyFields.ScrubNulls();
@@ -122,7 +124,8 @@ namespace Lasy
             var victims = DataStore[tableName].Where(r => r.IsSameAs(keyFields, keyFields.Keys, null));
             foreach (var vic in victims)
                 foreach (var key in dataFields.Keys)
-                    vic[key] = dataFields[key];                
+                    vic[key] = dataFields[key];
+            return victims.Count();
         }
 
         public virtual  ITransaction BeginTransaction()

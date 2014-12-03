@@ -175,7 +175,10 @@ namespace Lasy
         {
             using (var conn = _getConnection(_connectionString))
             {
-                return conn.ExecuteSingleColumn<string>(_getPrimaryKeySql(), new { table = TableName(tableName), schema = SchemaName(tableName) });
+                return conn.ExecuteSingleColumn(
+                    _getPrimaryKeySql(),
+                    new {table = TableName(tableName), schema = SchemaName(tableName)})
+                    .Select(o => o.ConvertTo<string>()).ToList();
             }
         }
 
@@ -188,7 +191,10 @@ namespace Lasy
         {
             using (var conn = _getConnection(_connectionString))
             {
-                var res = conn.ExecuteSingleColumn<string>(_getAutonumberKeySql(), new { table = TableName(tableName), schema = SchemaName(tableName) });
+                var res = conn.ExecuteSingleColumn(
+                    _getAutonumberKeySql(),
+                    new {table = TableName(tableName), schema = SchemaName(tableName)})
+                    .Select(o => o.ConvertTo<string>());
                 return res.SingleOr(null);
             }           
         }
@@ -254,7 +260,7 @@ namespace Lasy
                 var schema = SchemaName(tablename);
                 var sql = _getTableExistsSql(schema, table);
                 var paras = new { table = table, schema = schema };
-                return conn.ExecuteSingleValueOr<bool>(false, sql, paras);
+                return conn.ExecuteScalar(sql, paras).ConvertTo<bool?>() ?? false;
             }
         }
 
@@ -269,7 +275,7 @@ namespace Lasy
             var sql = _getSchemaExistsSql();
             using (var conn = _getConnection(_connectionString))
             {
-                return conn.ExecuteSingleValueOr(false, sql, paras);
+                return conn.ExecuteScalar(sql, paras).ConvertTo<bool?>() ?? false;
             }
         }
 
