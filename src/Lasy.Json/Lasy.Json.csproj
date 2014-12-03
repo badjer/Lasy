@@ -4,15 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BC52979D-AB56-4B87-8CEC-E6CF356FA8EC}</ProjectGuid>
+    <ProjectGuid>{7165406B-77FF-4CCF-9387-299E3AA9FB41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lasy.MySql</RootNamespace>
-    <AssemblyName>Lasy.MySql</AssemblyName>
+    <RootNamespace>Lasy.Json</RootNamespace>
+    <AssemblyName>Lasy.Json</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -33,12 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data">
-      <HintPath>..\packages\MySql.Data.6.7.4\lib\net40\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Nvelope, Version=1.1.0.0, Culture=neutral, PublicKeyToken=6713b367eb0b228d, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nvelope.1.1.0.0\lib\net451\Nvelope.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nvelope, Version=1.1.0.2, Culture=neutral, PublicKeyToken=6713b367eb0b228d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Nvelope.1.1.0.2\lib\net451\Nvelope.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,18 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MySqlAnalyzer.cs" />
-    <Compile Include="MySqlConnectTo.cs" />
-    <Compile Include="MySqlDB.cs" />
-    <Compile Include="MySqlModifier.cs" />
-    <Compile Include="MySqlNameQualifier.cs" />
+    <Compile Include="JsonDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\Lasy\Lasy.csproj">
+    <ProjectReference Include="..\Lasy\Lasy.csproj">
       <Project>{99a415f9-8d5a-4977-ac8b-86ea82c891d3}</Project>
       <Name>Lasy</Name>
     </ProjectReference>

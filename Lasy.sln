@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{ECC3DC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lasy-net4", "src\Lasy-net4\Lasy-net4.csproj", "{1D26E9C4-24C7-4D6A-8C47-F608F6314F58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lasy.MySql", "Lasy.MySql\Lasy.MySql.csproj", "{BC52979D-AB56-4B87-8CEC-E6CF356FA8EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lasy.MySql", "src\Lasy.MySql\Lasy.MySql.csproj", "{BC52979D-AB56-4B87-8CEC-E6CF356FA8EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lasy.Json", "Lasy.Json\Lasy.Json.csproj", "{7165406B-77FF-4CCF-9387-299E3AA9FB41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lasy.Json", "src\Lasy.Json\Lasy.Json.csproj", "{7165406B-77FF-4CCF-9387-299E3AA9FB41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

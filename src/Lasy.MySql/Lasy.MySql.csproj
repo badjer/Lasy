@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -34,11 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data">
-      <HintPath>..\packages\MySql.Data.6.7.4\lib\net40\MySql.Data.dll</HintPath>
+      <HintPath>..\..\packages\MySql.Data.6.7.4\lib\net40\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Nvelope, Version=1.1.0.0, Culture=neutral, PublicKeyToken=6713b367eb0b228d, processorArchitecture=MSIL">
+    <Reference Include="Nvelope, Version=1.1.0.2, Culture=neutral, PublicKeyToken=6713b367eb0b228d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nvelope.1.1.0.0\lib\net451\Nvelope.dll</HintPath>
+      <HintPath>..\..\packages\Nvelope.1.1.0.2\lib\net451\Nvelope.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,7 +60,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\Lasy\Lasy.csproj">
+    <ProjectReference Include="..\Lasy\Lasy.csproj">
       <Project>{99a415f9-8d5a-4977-ac8b-86ea82c891d3}</Project>
       <Name>Lasy</Name>
     </ProjectReference>

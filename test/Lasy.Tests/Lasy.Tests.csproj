@@ -39,7 +39,8 @@
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Nvelope">
+    <Reference Include="Nvelope, Version=1.1.0.2, Culture=neutral, PublicKeyToken=6713b367eb0b228d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Nvelope.1.1.0.2\lib\net451\Nvelope.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -77,16 +78,16 @@
     <Compile Include="SqlTypeConversionTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Lasy.Json\Lasy.Json.csproj">
+    <ProjectReference Include="..\..\src\Lasy.Json\Lasy.Json.csproj">
       <Project>{7165406b-77ff-4ccf-9387-299e3aa9fb41}</Project>
       <Name>Lasy.Json</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Lasy.MySql\Lasy.MySql.csproj">
+    <ProjectReference Include="..\..\src\Lasy.MySql\Lasy.MySql.csproj">
       <Project>{bc52979d-ab56-4b87-8cec-e6cf356fa8ec}</Project>
       <Name>Lasy.MySql</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Lasy\Lasy.csproj">
-      <Project>{99A415F9-8D5A-4977-AC8B-86EA82C891D3}</Project>
+      <Project>{99a415f9-8d5a-4977-ac8b-86ea82c891d3}</Project>
       <Name>Lasy</Name>
     </ProjectReference>
   </ItemGroup>
@@ -105,7 +106,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
