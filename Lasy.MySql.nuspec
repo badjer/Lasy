@@ -1,23 +1,22 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Lasy</id>
+    <id>Lasy.MySql</id>
     <version>2.0.0.0-beta1</version>
-    <title>Lasy</title>
+    <title>Lasy.MySql</title>
     <authors>Brian DeJong</authors>
     <owners>Trinity Western University</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A lightweight CRUD abstraction layer for data storage.</description>
+    <description>MySql implementation for the Lasy lightweight CRUD abstraction layer for data storage.</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
     <dependencies>
+      <dependency id="MySql.Data" version="6.7.4" />
       <dependency id="Nvelope" version="2.0.0.0-beta1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="src/Lasy/bin/Release/Lasy.dll" target="lib/net451/Lasy.dll" />
-    <file src="src/Lasy/bin/Release/Lasy.xml" target="lib/net451/Lasy.xml" />
-    <file src="src/Lasy-net4/bin/Release/Lasy.dll" target="lib/net40/Lasy.dll" />
-    <file src="src/Lasy-net4/bin/Release/Lasy.xml" target="lib/net40/Lasy.xml" />
+    <file src="src/Lasy.MySql/bin/Release/Lasy.MySql.dll" target="lib/net451/Lasy.MySql.dll" />
+    <file src="src/Lasy.MySql-net4/bin/Release/Lasy.MySql.dll" target="lib/net40/Lasy.MySql.dll" />
   </files>
 </package>

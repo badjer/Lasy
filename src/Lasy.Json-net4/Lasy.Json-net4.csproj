@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7165406B-77FF-4CCF-9387-299E3AA9FB41}</ProjectGuid>
+    <ProjectGuid>{5325D4C8-E2B6-47F3-9434-524B02DE9039}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Lasy.Json</RootNamespace>
     <AssemblyName>Lasy.Json</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
@@ -35,10 +35,10 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Nvelope">
-      <HintPath>..\..\packages\Nvelope.2.0.0.0-beta1\lib\net451\Nvelope.dll</HintPath>
+      <HintPath>..\..\packages\Nvelope.2.0.0.0-beta1\lib\net40\Nvelope.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,16 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsonDB.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Lasy.Json\JsonDB.cs" />
+    <Compile Include="..\Lasy.Json\Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lasy\Lasy.csproj">
-      <Project>{99a415f9-8d5a-4977-ac8b-86ea82c891d3}</Project>
-      <Name>Lasy</Name>
+    <ProjectReference Include="..\Lasy-net4\Lasy-net4.csproj">
+      <Project>{1d26e9c4-24c7-4d6a-8c47-f608f6314f58}</Project>
+      <Name>Lasy-net4</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

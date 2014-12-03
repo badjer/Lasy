@@ -37,13 +37,9 @@
     <DocumentationFile>bin\Release\Lasy.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Nvelope, Version=2.0.0.0, Culture=neutral, PublicKeyToken=6713b367eb0b228d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Nvelope">
-      <HintPath>..\..\packages\Nvelope.1.1.0.2\lib\net40\Nvelope.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\Nvelope.2.0.0.0-beta1\lib\net40\Nvelope.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

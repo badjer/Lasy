@@ -1,23 +1,22 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Lasy</id>
+    <id>Lasy.Json</id>
     <version>2.0.0.0-beta1</version>
     <title>Lasy</title>
     <authors>Brian DeJong</authors>
     <owners>Trinity Western University</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A lightweight CRUD abstraction layer for data storage.</description>
+    <description>Json drivers for the Lasy lightweight CRUD abstraction layer for data storage.</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
     <dependencies>
+      <dependency id="Newtonsoft.Json" version="6.0.1" />
       <dependency id="Nvelope" version="2.0.0.0-beta1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="src/Lasy/bin/Release/Lasy.dll" target="lib/net451/Lasy.dll" />
-    <file src="src/Lasy/bin/Release/Lasy.xml" target="lib/net451/Lasy.xml" />
-    <file src="src/Lasy-net4/bin/Release/Lasy.dll" target="lib/net40/Lasy.dll" />
-    <file src="src/Lasy-net4/bin/Release/Lasy.xml" target="lib/net40/Lasy.xml" />
+    <file src="src/Lasy.Json/bin/Release/Lasy.Json.dll" target="lib/net451/Lasy.Json.dll" />
+    <file src="src/Lasy.Json-net4/bin/Release/Lasy.Json.dll" target="lib/net40/Lasy.Json.dll" />
   </files>
 </package>

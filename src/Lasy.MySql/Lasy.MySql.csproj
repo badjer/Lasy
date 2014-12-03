@@ -36,9 +36,8 @@
     <Reference Include="MySql.Data">
       <HintPath>..\..\packages\MySql.Data.6.7.4\lib\net40\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Nvelope, Version=1.1.0.2, Culture=neutral, PublicKeyToken=6713b367eb0b228d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Nvelope.1.1.0.2\lib\net451\Nvelope.dll</HintPath>
+    <Reference Include="Nvelope">
+      <HintPath>..\..\packages\Nvelope.2.0.0.0-beta1\lib\net451\Nvelope.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

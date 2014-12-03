@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lasy.MySql", "src\Lasy.MySq
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lasy.Json", "src\Lasy.Json\Lasy.Json.csproj", "{7165406B-77FF-4CCF-9387-299E3AA9FB41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lasy.MySql-net4", "src\Lasy.MySql-net4\Lasy.MySql-net4.csproj", "{0DF6A84F-98F9-4D09-967A-600DEE910DBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lasy.Json-net4", "src\Lasy.Json-net4\Lasy.Json-net4.csproj", "{5325D4C8-E2B6-47F3-9434-524B02DE9039}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{7165406B-77FF-4CCF-9387-299E3AA9FB41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7165406B-77FF-4CCF-9387-299E3AA9FB41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7165406B-77FF-4CCF-9387-299E3AA9FB41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DF6A84F-98F9-4D09-967A-600DEE910DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DF6A84F-98F9-4D09-967A-600DEE910DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DF6A84F-98F9-4D09-967A-600DEE910DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DF6A84F-98F9-4D09-967A-600DEE910DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5325D4C8-E2B6-47F3-9434-524B02DE9039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5325D4C8-E2B6-47F3-9434-524B02DE9039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5325D4C8-E2B6-47F3-9434-524B02DE9039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5325D4C8-E2B6-47F3-9434-524B02DE9039}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
